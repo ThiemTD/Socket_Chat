@@ -1,4 +1,0 @@
-﻿  Server.cpp
-c:\users\thiemtd\documents\visual studio 2013\projects\server\server\server.cpp(79): warning C4996: 'gets': This function or variable may be unsafe. Consider using gets_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(254) : see declaration of 'gets'
-  Server.vcxproj -> c:\users\thiemtd\documents\visual studio 2013\Projects\Server\Debug\Server.exe
