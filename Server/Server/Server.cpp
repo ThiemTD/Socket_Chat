@@ -4,6 +4,9 @@
 #include "stdafx.h"
 #include "Server.h"
 #include "afxsock.h"
+#include <tchar.h>
+#include <windows.h>
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -19,7 +22,9 @@ using namespace std;
 int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 {
 	int nRetCode = 0;
-
+	wchar_t m_IP[16];
+	GetPrivateProfileString(L"Settings", L"IP", L"", m_IP, sizeof(m_IP), L".\\ServerConfig.ini");
+	int m_Port = GetPrivateProfileInt(L"Settings", L"Port", 0, L".\\ServerConfig.ini");
 	HMODULE hModule = ::GetModuleHandle(NULL);
 
 	if (hModule != NULL)
@@ -44,7 +49,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 			CSocket client;
 
 			//Khoi tao socket voi port
-			server.Create(6628);
+			server.Create(m_Port);
 
 			//Nghe ket noi tu client
 			server.Listen();
