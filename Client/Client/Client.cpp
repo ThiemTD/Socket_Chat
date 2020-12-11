@@ -20,7 +20,9 @@ using namespace std;
 int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 {
 	int nRetCode = 0;
-
+	wchar_t m_IP[16];
+	GetPrivateProfileString(L"Settings", L"IP", L"", m_IP, sizeof(m_IP), L".\\ClientConfig.ini");
+	int m_Port = GetPrivateProfileInt(L"Settings", L"Port", 0, L".\\ClientConfig.ini");
 	HMODULE hModule = ::GetModuleHandle(NULL);
 
 	if (hModule != NULL)
@@ -48,7 +50,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 			client.Create(); // Khong can khoi tao port
 
 			//Ket noi toi server
-			client.Connect(_T("10.1.1.11Ưha"), 6628);
+			client.Connect(m_IP, m_Port);
 
 			//Start chat
 			char msg[100];
